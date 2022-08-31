@@ -35,4 +35,9 @@ public class PostController {
     void deletePost (@PathVariable("id") Long id) {
         postService.deletePost(id);
     }
+
+    @PutMapping
+    public PostsEntity updatePost(@RequestBody PostsEntity postsEntity) {
+        return postService.updatePost(postsEntity);
+    }
 }
