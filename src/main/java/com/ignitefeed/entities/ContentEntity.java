@@ -14,10 +14,10 @@ public class ContentEntity {
     private Long Id;
 
     @Column(name = "paragraph")
-    private String Parapgraph;
+    private String Paragraph;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "content_id", nullable = false)
+    @JoinColumn(name = "content_id")
     private PostsEntity postContent;
 
     public Long getId() {
@@ -29,11 +29,11 @@ public class ContentEntity {
     }
 
     public String getParapgraph() {
-        return Parapgraph;
+        return Paragraph;
     }
 
     public void setParapgraph(String parapgraph) {
-        Parapgraph = parapgraph;
+        Paragraph = parapgraph;
     }
 
     @JsonBackReference

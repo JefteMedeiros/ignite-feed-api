@@ -17,7 +17,7 @@ public class CommentEntity {
     private String Feedback;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "comment_id", nullable = false)
+    @JoinColumn(name = "comment_id")
     private PostsEntity postComment;
 
     public Long getId() {
