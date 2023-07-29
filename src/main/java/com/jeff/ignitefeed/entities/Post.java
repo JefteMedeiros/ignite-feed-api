@@ -1,11 +1,11 @@
 package com.jeff.ignitefeed.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity

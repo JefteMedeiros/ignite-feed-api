@@ -7,7 +7,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 public class Utils {
     public static String[] filtrarPropriedades(Object source) {
