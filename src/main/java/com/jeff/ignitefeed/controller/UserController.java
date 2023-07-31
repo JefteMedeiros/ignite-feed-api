@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 
@@ -32,8 +32,8 @@ public class UserController {
         return userService.listUsers();
     }
 
-    @GetMapping
-    public User findUserById (Long id) {
+    @GetMapping("/{id}")
+    public User findUserById (@PathVariable Long id) {
         return userService.findUserById(id);
     }
 
