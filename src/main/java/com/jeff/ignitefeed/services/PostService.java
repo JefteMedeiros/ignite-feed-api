@@ -2,18 +2,16 @@ package com.jeff.ignitefeed.services;
 
 import com.jeff.ignitefeed.entities.Post;
 import com.jeff.ignitefeed.repository.PostRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
-
-    public PostService(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
 
     public List<Post> listAllPosts() {
         return postRepository.findAll();
