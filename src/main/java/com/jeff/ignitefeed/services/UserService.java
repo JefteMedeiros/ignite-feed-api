@@ -8,10 +8,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.jeff.ignitefeed.utils.UserUtils.filtrarPropriedades;
+import static org.springframework.beans.BeanUtils.copyProperties;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
 
     public List<User> listUsers() {
         return userRepository.findAll();
@@ -23,22 +30,16 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
     }
 
+    public User editUser(Long id, User user) {
+        var userById = findUserById(id);
+        copyProperties(user,
+                userById,
+                filtrarPropriedades(user));
+        return userRepository.save(userById);
+    }
+
     public void deleteUser(Long id) {
         var user = findUserById(id);
         userRepository.delete(user);
     }
-
-    public void editUser(Long id, User user) {
-        var userById = findUserById(id);
-
-        userById.setEmail(user.getEmail());
-        userById.set(user.getEmail());
-        userById.setEmail(user.getEmail());
-        userById.setEmail(user.getEmail());
-        userById.setEmail(user.getEmail());
-
-
-        userRepository.save(user);
-    }
-
 }
