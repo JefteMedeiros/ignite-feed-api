@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-@Table(name="user")
+@Table(name="tb_user")
 @Entity
 public class User {
     @Id

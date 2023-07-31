@@ -12,7 +12,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "posts")
+@Table(name = "tb_posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

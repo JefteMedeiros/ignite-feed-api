@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "comments")
+@Table(name = "tb_comments")
 public class Comment {
 
     @Id
