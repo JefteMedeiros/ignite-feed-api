@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.jeff.ignitefeed.utils.UserUtils.filtrarPropriedades;
+import static com.jeff.ignitefeed.utils.Utils.filtrarPropriedades;
 import static org.springframework.beans.BeanUtils.copyProperties;
 
 @Service

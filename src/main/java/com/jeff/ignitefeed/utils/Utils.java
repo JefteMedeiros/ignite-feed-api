@@ -2,11 +2,14 @@ package com.jeff.ignitefeed.utils;
 
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
-public class UserUtils {
+public class Utils {
     public static String[] filtrarPropriedades(Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
         java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
@@ -19,5 +22,14 @@ public class UserUtils {
 
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
+    }
+
+    // Estudar o motivo da necessidade de criação de uma URI em POST requests
+    public static URI generateURI(Long id) {
+        return ServletUriComponentsBuilder
+                .fromCurrentRequestUri()
+                .path("/{id}")
+                .buildAndExpand(id)
+                .toUri();
     }
 }
