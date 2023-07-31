@@ -18,20 +18,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    private String role;
-
-    private String pic;
-
-    private String link;
-
     private String date;
-
-    @OneToMany(mappedBy = "postContent", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Content> content;
 
     @OneToMany(mappedBy = "postComment", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
