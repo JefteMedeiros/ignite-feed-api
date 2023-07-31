@@ -1,8 +1,8 @@
-package com.ignitefeed.services.impl;
+package com.jeff.ignitefeed.services.impl;
 
-import com.ignitefeed.entities.CommentEntity;
-import com.ignitefeed.repository.CommentRepository;
-import com.ignitefeed.services.CommentService;
+import com.jeff.ignitefeed.entities.Comment;
+import com.jeff.ignitefeed.repository.CommentRepository;
+import com.jeff.ignitefeed.services.CommentService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +14,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public CommentEntity addComment(CommentEntity comment) {
+    public Comment addComment(Comment comment) {
         return commentRepository.save(comment);
     }
 
@@ -24,7 +24,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public CommentEntity updateComment(CommentEntity commentEntity) {
-        return commentRepository.save(commentEntity);
+    public Comment updateComment(Comment comment) {
+        return commentRepository.save(comment);
     }
 }

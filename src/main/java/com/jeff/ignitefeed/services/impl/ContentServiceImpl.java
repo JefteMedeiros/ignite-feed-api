@@ -1,8 +1,8 @@
-package com.ignitefeed.services.impl;
+package com.jeff.ignitefeed.services.impl;
 
-import com.ignitefeed.entities.ContentEntity;
-import com.ignitefeed.repository.ContentRepository;
-import com.ignitefeed.services.ContentService;
+import com.jeff.ignitefeed.entities.Content;
+import com.jeff.ignitefeed.repository.ContentRepository;
+import com.jeff.ignitefeed.services.ContentService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +14,7 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public ContentEntity addContent(ContentEntity content) {
+    public Content addContent(Content content) {
         return contentRepository.save(content);
     }
 
@@ -24,7 +24,7 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public ContentEntity updateContent(ContentEntity content) {
+    public Content updateContent(Content content) {
         return contentRepository.save(content);
     }
 }

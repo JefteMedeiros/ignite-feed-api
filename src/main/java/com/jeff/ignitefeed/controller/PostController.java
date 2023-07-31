@@ -1,14 +1,14 @@
-package com.ignitefeed.controller;
+package com.jeff.ignitefeed.controller;
 
-import com.ignitefeed.entities.PostsEntity;
-import com.ignitefeed.services.PostService;
+import com.jeff.ignitefeed.entities.Post;
+import com.jeff.ignitefeed.services.PostService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
     private final PostService postService;
 
@@ -17,17 +17,17 @@ public class PostController {
     }
 
     @GetMapping
-    public List<PostsEntity> getAllPosts() {
+    public List<Post> getAllPosts() {
         return postService.listAllPosts();
     }
 
     @GetMapping("/{id}")
-    public Optional<PostsEntity> getPostById(@PathVariable("id") Long id) {
+    public Optional<Post> getPostById(@PathVariable("id") Long id) {
         return postService.findPostById(id);
     }
 
     @PostMapping()
-    public PostsEntity createPost(@RequestBody PostsEntity post) {
+    public Post createPost(@RequestBody Post post) {
         return postService.createPost(post);
     }
 
@@ -37,7 +37,7 @@ public class PostController {
     }
 
     @PutMapping
-    public PostsEntity updatePost(@RequestBody PostsEntity postsEntity) {
-        return postService.updatePost(postsEntity);
+    public Post updatePost(@RequestBody Post post) {
+        return postService.updatePost(post);
     }
 }

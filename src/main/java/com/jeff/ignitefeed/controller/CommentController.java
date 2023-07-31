@@ -1,11 +1,11 @@
-package com.ignitefeed.controller;
+package com.jeff.ignitefeed.controller;
 
-import com.ignitefeed.entities.CommentEntity;
-import com.ignitefeed.services.CommentService;
+import com.jeff.ignitefeed.entities.Comment;
+import com.jeff.ignitefeed.services.CommentService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/comment")
+@RequestMapping("/comments")
 public class CommentController {
     private final CommentService commentService;
 
@@ -14,7 +14,7 @@ public class CommentController {
     }
 
     @PostMapping
-    public CommentEntity addComment(@RequestBody CommentEntity comment) {
+    public Comment addComment(@RequestBody Comment comment) {
         return commentService.addComment(comment);
     }
 

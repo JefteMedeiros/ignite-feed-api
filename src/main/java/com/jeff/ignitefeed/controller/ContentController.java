@@ -1,7 +1,7 @@
-package com.ignitefeed.controller;
+package com.jeff.ignitefeed.controller;
 
-import com.ignitefeed.entities.ContentEntity;
-import com.ignitefeed.services.ContentService;
+import com.jeff.ignitefeed.entities.Content;
+import com.jeff.ignitefeed.services.ContentService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +14,7 @@ public class ContentController {
     }
 
     @PostMapping
-    public ContentEntity addContent(@RequestBody ContentEntity content) {
+    public Content addContent(@RequestBody Content content) {
         return contentService.addContent(content);
     }
 
