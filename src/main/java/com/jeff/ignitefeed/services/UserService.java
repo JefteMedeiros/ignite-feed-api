@@ -19,8 +19,26 @@ public class UserService {
 
     // Criar uma exception na package exceptions
     // OrElseThrow o nome já diz
-    public User listUser(Long id) {
+    public User findUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+    }
+
+    public void deleteUser(Long id) {
+        var user = findUserById(id);
+        userRepository.delete(user);
+    }
+
+    public void editUser(Long id, User user) {
+        var userById = findUserById(id);
+
+        userById.setEmail(user.getEmail());
+        userById.set(user.getEmail());
+        userById.setEmail(user.getEmail());
+        userById.setEmail(user.getEmail());
+        userById.setEmail(user.getEmail());
+
+
+        userRepository.save(user);
     }
 
 }
