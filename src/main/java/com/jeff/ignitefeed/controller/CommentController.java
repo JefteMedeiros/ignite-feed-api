@@ -18,9 +18,9 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @PostMapping
-    public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
-        var returnedComment = commentService.createComment(comment);
+    @PostMapping("/post/{id}")
+    public ResponseEntity<Comment> createComment(@PathVariable Long id, @RequestBody Comment comment) {
+        var returnedComment = commentService.createComment(comment, id);
         URI uri = Utils.generateURI(returnedComment.getId());
 
         return ResponseEntity.created(uri).body(returnedComment);

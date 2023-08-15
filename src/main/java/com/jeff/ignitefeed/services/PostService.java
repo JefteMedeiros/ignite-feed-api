@@ -3,6 +3,7 @@ package com.jeff.ignitefeed.services;
 import com.jeff.ignitefeed.entities.Post;
 import com.jeff.ignitefeed.exceptions.ObjectNotFoundException;
 import com.jeff.ignitefeed.repository.PostRepository;
+import com.jeff.ignitefeed.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,14 @@ import static org.springframework.beans.BeanUtils.copyProperties;
 public class PostService {
     private final PostRepository postRepository;
 
-    public Post createPost(Post post) {
+    private final UserRepository userRepository;
+
+    public Post createPost(Post post, Long id) {
+        var userByid = userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+        // Seta o usuário no objeto post
+        // Atribui o usuário a um post através de um relacionamento (passando o user através do find user by id)
+        post.setUser(userByid);
+
         return postRepository.save(post);
     }
 

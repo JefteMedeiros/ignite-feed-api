@@ -28,9 +28,6 @@ public class User {
 
     private String pic;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Post> posts;
-
-    @OneToMany(mappedBy = "user")
-    private List<Comment> comments;
 }

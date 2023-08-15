@@ -1,5 +1,6 @@
 package com.jeff.ignitefeed.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,10 +25,11 @@ public class Post {
 
     private String content;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 
     @ManyToOne()
+    @JsonIgnore()
     @JoinColumn(name="user_id", referencedColumnName = "id", nullable = false)
     private User user;
 }

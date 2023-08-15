@@ -3,6 +3,8 @@ package com.jeff.ignitefeed.services;
 import com.jeff.ignitefeed.entities.Comment;
 import com.jeff.ignitefeed.exceptions.ObjectNotFoundException;
 import com.jeff.ignitefeed.repository.CommentRepository;
+import com.jeff.ignitefeed.repository.PostRepository;
+import com.jeff.ignitefeed.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,12 @@ import static org.springframework.beans.BeanUtils.copyProperties;
 @RequiredArgsConstructor
 public class CommentService {
     private final CommentRepository commentRepository;
+    private final PostRepository postRepository;
 
-    public Comment createComment(Comment comment) {
+    public Comment createComment(Comment comment, Long id) {
+        var postById = postRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+        comment.setPost(postById);
+
         return commentRepository.save(comment);
     }
 

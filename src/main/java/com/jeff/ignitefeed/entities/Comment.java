@@ -1,5 +1,6 @@
 package com.jeff.ignitefeed.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,10 +20,7 @@ public class Comment {
     private String content;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="post_id", referencedColumnName = "id", nullable = false)
     private Post post;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User user;
 }

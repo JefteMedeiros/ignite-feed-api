@@ -18,9 +18,9 @@ public class PostController {
         this.postService = postService;
     }
 
-    @PostMapping
-    public ResponseEntity<Post> createPost(@RequestBody Post post) {
-        var returnedPost = postService.createPost(post);
+    @PostMapping("/user/{id}")
+    public ResponseEntity<Post> createPost(@PathVariable Long id, @RequestBody Post post) {
+        var returnedPost = postService.createPost(post, id);
         URI uri = Utils.generateURI(returnedPost.getId());
 
         return ResponseEntity.created(uri).body(returnedPost);
