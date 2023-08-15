@@ -30,7 +30,7 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
     }
 
-    public User editUser(Long id, User user) {
+    public User updateUser(Long id, User user) {
         var userById = findUserById(id);
         copyProperties(user,
                 userById,

@@ -2,10 +2,12 @@ package com.jeff.ignitefeed.controller;
 
 import com.jeff.ignitefeed.entities.Post;
 import com.jeff.ignitefeed.services.PostService;
+import com.jeff.ignitefeed.utils.Utils;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/posts")
@@ -16,28 +18,31 @@ public class PostController {
         this.postService = postService;
     }
 
+    @PostMapping
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
+        var returnedPost = postService.createPost(post);
+        URI uri = Utils.generateURI(returnedPost.getId());
+
+        return ResponseEntity.created(uri).body(returnedPost);
+    }
+
     @GetMapping
-    public List<Post> getAllPosts() {
-        return postService.listAllPosts();
+    public List<Post> listPosts() {
+        return postService.listPosts();
     }
 
     @GetMapping("/{id}")
-    public Optional<Post> getPostById(@PathVariable("id") Long id) {
+    public Post getPostById(@PathVariable Long id) {
         return postService.findPostById(id);
     }
 
-    @PostMapping()
-    public Post createPost(@RequestBody Post post) {
-        return postService.createPost(post);
+    @PutMapping("/{id}")
+    public Post updatePost(@PathVariable Long id, @RequestBody Post post) {
+        return postService.updatePost(post, id);
     }
 
     @DeleteMapping("/{id}")
     void deletePost (@PathVariable("id") Long id) {
         postService.deletePost(id);
-    }
-
-    @PutMapping
-    public Post updatePost(@RequestBody Post post) {
-        return postService.updatePost(post);
     }
 }

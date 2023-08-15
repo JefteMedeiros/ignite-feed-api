@@ -8,7 +8,7 @@ import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Utils {
+public class    Utils {
     public static String[] filtrarPropriedades(Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
         java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();

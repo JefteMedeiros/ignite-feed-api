@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,8 +21,10 @@ public class Post {
 
     private String date;
 
-    @OneToMany(mappedBy = "postComment", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Comment> comment;
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comment;
+
+    @ManyToOne()
+    @JoinColumn(name="user_id", referencedColumnName = "id", nullable = false)
+    private User user;
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
@@ -24,4 +26,10 @@ public class User {
     private String role;
 
     private String pic;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> post;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comment;
 }

@@ -13,22 +13,16 @@ import lombok.NoArgsConstructor;
 public class Comment {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @Column(name = "feedback")
-    private String Feedback;
+    private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "comment_id")
-    private Post postComment;
+    @ManyToOne
+    @JoinColumn(name="comment_id", referencedColumnName = "id", nullable = false)
+    private Post post;
 
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User user;
 }
