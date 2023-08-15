@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name="tb_user")
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,8 +29,8 @@ public class User {
     private String pic;
 
     @OneToMany(mappedBy = "user")
-    private List<Post> post;
+    private List<Post> posts;
 
     @OneToMany(mappedBy = "user")
-    private List<Comment> comment;
+    private List<Comment> comments;
 }

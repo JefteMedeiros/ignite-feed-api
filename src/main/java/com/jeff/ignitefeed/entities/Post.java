@@ -15,14 +15,17 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "tb_posts")
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String date;
 
+    private String content;
+
     @OneToMany(mappedBy = "post")
-    private List<Comment> comment;
+    private List<Comment> comments;
 
     @ManyToOne()
     @JoinColumn(name="user_id", referencedColumnName = "id", nullable = false)
